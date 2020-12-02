@@ -3,7 +3,7 @@
     "scripts": {
         "dev": "./node_modules/.bin/nuxt",
         "build": "NODE_ENV=production nuxt build",
-        "start": "NODE_ENV=production nuxt start",
+        "start": "NODE_ENV=production NUXT_HOST=0.0.0.0 nuxt start",
         "install-start": "npm install && npm start"
     },
     "dependencies": {

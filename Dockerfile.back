@@ -12,4 +12,4 @@ COPY ./php/php-fpm.conf /etc/php/7.2/fpm/php-fpm.conf
 COPY ./php/www.conf /etc/php/7.2/fpm/php-fpm.d/www.conf
 
 #CMD php artisan serve --host=0.0.0.0 --port=9000
-CMD ["php-fpm", "--fpm-config", "/etc/php/7.2/fpm/php-fpm.conf", "-R"]
+CMD sleep 5 && php artisan migrate && php-fpm --fpm-config /etc/php/7.2/fpm/php-fpm.conf -R

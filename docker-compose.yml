@@ -13,9 +13,9 @@ services:
       - "9000:9000"
     volumes:
       - ./backend-master:/var/www/html
-#    depends_on:
-#      - postgres
-#      - redis
+    depends_on:
+      - postgres
+      - redis
     env_file: backend-master/.env
     networks:
       laravel:
@@ -58,6 +58,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: docker
+      POSTGRES_DB: blog
     networks:
       laravel:
         aliases:
