@@ -5,4 +5,4 @@ COPY ./admin-master/package.json package.json
 #COPY ./admin-master/package-lock.json package-lock.json
 RUN npm install
 COPY ./admin-master .
-CMD npm run install-start
+CMD npm run build && npm run start
