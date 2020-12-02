@@ -14,14 +14,25 @@ services:
     volumes:
       - ./backend-master:/var/www/html
 #    depends_on:
-#      - webserver
+#      - postgres
 #      - redis
     env_file: backend-master/.env
     networks:
       laravel:
         aliases:
           - backend
-#  admin_app:
+
+  admin_app:
+    build:
+      context: ./
+      dockerfile: Dockerfile.admin
+    ports:
+      - "3000:3000"
+    env_file: admin-master/.env
+    networks:
+      laravel:
+        aliases:
+          - admin
 
   webserver:
     build:
@@ -40,7 +51,7 @@ services:
     depends_on:
       - backend
 
-  db:
+  postgres:
     image: postgres
     ports:
       - "5432:5432"
