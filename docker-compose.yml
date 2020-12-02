@@ -41,7 +41,7 @@ services:
     container_name: webserver
     restart: unless-stopped
     ports:
-      - "8012:80"
+      - "80:80"
       - "443:443"
     networks:
       - laravel
@@ -50,7 +50,7 @@ services:
 #      - ./nginx/:/etc/nginx/conf.d/
     depends_on:
       - backend
-
+      - admin_app
   postgres:
     image: postgres
     ports:
