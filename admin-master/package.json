@@ -1,0 +1,46 @@
+{
+    "name": "admin_generic",
+    "scripts": {
+        "dev": "./node_modules/.bin/nuxt",
+        "build": "NODE_ENV=production nuxt build",
+        "start": "NODE_ENV=production nuxt start",
+        "install-start": "npm install && npm start"
+    },
+    "dependencies": {
+        "@nuxtjs/axios": "^5.6.0",
+        "@nuxtjs/font-awesome": "^1.0.3",
+        "@nuxtjs/toast": "^3.0.0",
+        "ajv": "^6.5.2",
+        "apidoc": "^0.17.6",
+        "ckeditor": "^4.10.0",
+        "dotenv": "^5.0.0",
+        "element-ui": "^2.4.3",
+        "less": "^3.0.1",
+        "less-loader": "^4.1.0",
+        "lodash": "^4.17.15",
+        "moment": "^2.20.1",
+        "moment-timezone": "^0.5.21",
+        "node-sass": "^4.9.2",
+        "normalize.css": "^7.0.0",
+        "nuxt": "^2.9.2",
+        "nuxt-device-detect": "^1.1.1",
+        "prettier": "1.12.1",
+        "sass-loader": "^6.0.6",
+        "uglifyjs-webpack-plugin": "^1.2.5",
+        "watch": "^1.0.2"
+    },
+    "devDependencies": {
+        "@ckeditor/ckeditor5-build-inline": "11.0.1",
+        "@ckeditor/ckeditor5-markdown-gfm": "10.0.2",
+        "babel-eslint": "^8.2.1",
+        "babel-plugin-component": "^1.1.1",
+        "eslint": "^4.16.0",
+        "eslint-config-airbnb-base": "^12.1.0",
+        "eslint-friendly-formatter": "^3.0.0",
+        "eslint-import-resolver-webpack": "^0.8.4",
+        "eslint-loader": "^1.7.1",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-vue": "^4.0.0",
+        "uglify-js": "^2.8.29"
+    }
+}

@@ -1,0 +1,8 @@
+.nuxt
+node_modules/
+.idea/
+.env
+\.DS_Store
+
+api/\.api_result\.js
+plugins/country_list/CountryList.js

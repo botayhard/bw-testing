@@ -1,0 +1,60 @@
+version: '3'
+
+networks:
+  laravel:
+    driver: bridge
+
+services:
+  backend:
+    build:
+      context: ./
+      dockerfile: Dockerfile.back
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./backend-master:/var/www/html
+#    depends_on:
+#      - webserver
+#      - redis
+    env_file: backend-master/.env
+    networks:
+      laravel:
+        aliases:
+          - backend
+#  admin_app:
+
+  webserver:
+    build:
+      context: ./
+      dockerfile: Dockerfile.nginx
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - "8012:80"
+      - "443:443"
+    networks:
+      - laravel
+    volumes:
+      - ./backend-master:/var/www/html
+#      - ./nginx/:/etc/nginx/conf.d/
+    depends_on:
+      - backend
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+    networks:
+      laravel:
+        aliases:
+          - db
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - laravel

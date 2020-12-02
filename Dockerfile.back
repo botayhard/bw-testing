@@ -1,0 +1,15 @@
+FROM php:7.2-fpm-buster
+RUN apt-get update -y && apt-get install -y libpq-dev git zip unzip
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN docker-php-ext-install pdo pdo_pgsql
+#WORKDIR /laravel
+#COPY ./backend-master /laravel
+WORKDIR /var/www/html
+COPY ./backend-master /var/www/html
+RUN composer self-update --1
+RUN composer install
+COPY ./php/php-fpm.conf /etc/php/7.2/fpm/php-fpm.conf
+COPY ./php/www.conf /etc/php/7.2/fpm/php-fpm.d/www.conf
+
+#CMD php artisan serve --host=0.0.0.0 --port=9000
+CMD ["php-fpm", "--fpm-config", "/etc/php/7.2/fpm/php-fpm.conf", "-R"]
