@@ -46,7 +46,6 @@ services:
       - laravel
     volumes:
       - ./backend-master:/var/www/html
-#      - ./nginx/:/etc/nginx/conf.d/
     depends_on:
       - backend
       - admin_app
@@ -54,10 +53,7 @@ services:
     image: postgres
     ports:
       - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: docker
-      POSTGRES_DB: blog
+    env_file: postgres/.env
     networks:
       laravel:
         aliases:
